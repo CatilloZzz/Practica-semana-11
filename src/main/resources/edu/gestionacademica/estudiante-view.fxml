@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="edu.gestionacademica.controller.EstudianteController"
+      spacing="18"
+      prefWidth="1000"
+      prefHeight="680"
+      style="-fx-background-color: #F3F6FA; -fx-font-family: 'Segoe UI';">
+
+    <padding>
+        <Insets top="24" right="24" bottom="24" left="24"/>
+    </padding>
+
+    <VBox spacing="5">
+        <Label text="Gestión académica"
+               style="-fx-font-size: 27px; -fx-font-weight: bold; -fx-text-fill: #20344D;"/>
+        <Label text="Registro y consulta de estudiantes"
+               style="-fx-font-size: 14px; -fx-text-fill: #64748B;"/>
+    </VBox>
+
+    <VBox spacing="15"
+          style="-fx-background-color: white; -fx-background-radius: 12;">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+
+        <Label text="Nuevo estudiante"
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #20344D;"/>
+
+        <GridPane hgap="18" vgap="10">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50" hgrow="ALWAYS"/>
+                <ColumnConstraints percentWidth="50" hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="Nombres *"
+                   GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <Label text="Apellidos *"
+                   GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <TextField fx:id="txtNombres"
+                       promptText="Ingrese los nombres"
+                       prefHeight="38"
+                       GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
+            <TextField fx:id="txtApellidos"
+                       promptText="Ingrese los apellidos"
+                       prefHeight="38"
+                       GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Correo electrónico *"
+                   GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <Label text="Carrera *"
+                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <TextField fx:id="txtCorreo"
+                       promptText="estudiante@ejemplo.com"
+                       prefHeight="38"
+                       GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+
+            <ComboBox fx:id="cmbCarrera"
+                      promptText="Seleccione una carrera"
+                      prefHeight="38"
+                      maxWidth="Infinity"
+                      GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        </GridPane>
+
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <Button fx:id="btnGuardar"
+                    text="Guardar estudiante"
+                    onAction="#guardarEstudiante"
+                    prefHeight="38"
+                    style="-fx-background-color: #2563EB; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 7;"/>
+
+            <Button fx:id="btnConsultar"
+                    text="Consultar estudiantes"
+                    onAction="#consultarEstudiantes"
+                    prefHeight="38"
+                    style="-fx-background-color: #E2E8F0; -fx-text-fill: #20344D; -fx-background-radius: 7;"/>
+
+            <ProgressIndicator fx:id="indicador"
+                               visible="false"
+                               managed="false"
+                               prefWidth="26"
+                               prefHeight="26"/>
+        </HBox>
+
+        <Label text="* Todos los campos son obligatorios."
+               style="-fx-text-fill: #64748B;"/>
+    </VBox>
+
+    <HBox alignment="CENTER_LEFT" spacing="12">
+        <Label text="Estudiantes registrados"
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #20344D;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="lblTotal"
+               text="0 estudiantes"
+               style="-fx-text-fill: #64748B;"/>
+    </HBox>
+
+    <TableView fx:id="tablaEstudiantes" VBox.vgrow="ALWAYS">
+        <placeholder>
+            <Label text="Presione Consultar estudiantes para cargar los registros."/>
+        </placeholder>
+
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="70"/>
+            <TableColumn fx:id="colNombres" text="Nombres" prefWidth="180"/>
+            <TableColumn fx:id="colApellidos" text="Apellidos" prefWidth="180"/>
+            <TableColumn fx:id="colCorreo" text="Correo electrónico" prefWidth="250"/>
+            <TableColumn fx:id="colCarrera" text="Carrera" prefWidth="250"/>
+        </columns>
+    </TableView>
+
+    <Label fx:id="lblEstado"
+           text="Listo para registrar o consultar estudiantes."
+           wrapText="true"
+           style="-fx-text-fill: #64748B;"/>
+</VBox>
