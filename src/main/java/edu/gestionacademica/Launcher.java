@@ -1,10 +1,7 @@
-package com.pos.demo.controller;
-
-import com.pos.demo.MainApp;
-import javafx.application.Application;
+package edu.gestionacademica;
 
 public class Launcher {
     public static void main(String[] args) {
-        Application.launch(MainApp.class, args);
+        edu.gestionacademica.MainApp.main(args);
     }
 }

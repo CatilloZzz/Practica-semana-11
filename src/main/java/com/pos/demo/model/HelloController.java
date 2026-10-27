@@ -1,4 +1,4 @@
-package com.pos.demo;
+package com.pos.demo.model;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
